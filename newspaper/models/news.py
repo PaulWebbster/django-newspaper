@@ -36,6 +36,10 @@ class News(models.Model):
     def is_visible(self):
         return True if self.status == self.OPUBLIKOWANY else False
 
+    def save_model(self, request, instance, form, change):
+        self.author = request.user
+        return instance
+
 #    visible = property(visible_property)
 
     class Meta:
