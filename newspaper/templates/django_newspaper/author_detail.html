@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load i18n staticfiles sekizai_tags cms_tags %}
+
+{% block title %}{% page_attribute "page_title" %}Aktaulności - {{ news.title }}{{ field_event.short_name|upper }}{% endblock title %}
+
+{% block content %}
+
+<br><br>
+<div class="row">
+    <div class="col-md-1"></div>
+    <!-- Columna 1 -->
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Aktualności</div>
+            <div class="panel-body">
+                <h1>Autor {{ author.first_name }} {{ author.last_name }}</h1>
+                {% if page_obj %}
+                    {% for news in page_obj %}
+                        <h2>{{ news.title }}</h2>
+                        <hr>
+                        <p>Napisane dnia {{ news.pub_date }}</p>
+                        <br>{{ news.lead | safe }}
+                        {{ news.article | safe }}
+                        <br>
+                    {% endfor %}
+                {% else %}
+                    <p>Brak wiadomości</p>
+                {% endif %}
+                {% if is_paginated %}
+                    <div class="pagination">
+                        <span class="page-links">
+                            {% if page_obj.has_previous %}
+                                <a href="/news/author/{{ author.id }}?page={{ page_obj.previous_page_number }}">poprzednia</a>
+                            {% endif %}
+                            <span class="page-current">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                            </span>
+                            {% if page_obj.has_next %}
+                                <a href="/news/author/{{ author.id }}?page={{ page_obj.next_page_number }}">następna</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- Columna 2 -->
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">LOL</div>
+            <div class="panel-body">
+                lol2
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+{% endblock content %}
