@@ -1,0 +1,27 @@
+{% load i18n staticfiles sekizai_tags cms_tags django_newspaper_extras %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/django_newspaper/css/general.css">
+{% endblock extra_css %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">KALENDARZ</div>
+    <div class="panel-body">
+        <table class="table table-striped">
+        <caption>Luty 2016</caption>
+            <thead><tr>
+                <th class="mon">Pon</th>
+                <th class="tue">Wt</th>
+                <th class="wed">Śr</th>
+                <th class="thu">Czw</th>
+                <th class="fri">Pt</th>
+                <th class="sat">So</th>
+                <th class="sun">Nd</th>
+            </tr></thead>
+        <tfoot><tr><td colspan="3" class="prev"><a href="/pl/aktualnosci/2016/01/" class="previous-month">Styczeń 2016</a></td><td class="pad">&nbsp;</td><td colspan="3" class="next">&nbsp;</td></tr></tfoot>
+        <tbody>
+            {{ tbody | safe }}
+        </tbody>
+        </table>
+    </div>
+</div>

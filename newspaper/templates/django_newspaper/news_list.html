@@ -3,6 +3,10 @@
 
 {% block title %}{% page_attribute "page_title" %}Aktaulności - {{ news.title }}{{ field_event.short_name|upper }}{% endblock title %}
 
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}django_newspaper/css/general.css">
+{% endblock extra_css %}
+
 {% block content %}
 
 <br><br>
@@ -46,6 +50,8 @@
     <!-- Columna 2 -->
     <div class="col-md-4">
         {% show_authors %}
+
+        {% show_calendar %}
     </div>
     <div class="col-md-1"></div>
 </div>
