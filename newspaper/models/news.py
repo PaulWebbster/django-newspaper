@@ -13,7 +13,12 @@ class Author(User):
 
     @property
     def is_author(self):
-        return True
+        if len(self.news_set.all()) > 0:
+            return True
+
+    @property
+    def articles_number(self):
+        return len(self.news_set.all())
 
     def __unicode__(self):
         return self.get_full_name()
