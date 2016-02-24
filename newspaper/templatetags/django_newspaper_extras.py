@@ -27,12 +27,13 @@ def show_authors():
 def show_calendar(**kwargs):
     context_dict = dict()
 
-    if 'year' in kwargs:
-        print kwargs['year']
+    if 'year' in kwargs and 'month' in kwargs:
+        now = datetime.date(kwargs['year'], kwargs['month'], 1)
+    elif 'year' in kwargs:
+        now = datetime.date(kwargs['year'], 1, 1)
     else:
-        print "dupa"
+        now = datetime.datetime.now()
 
-    now = datetime.datetime.now()
     month_days = calendar.monthrange(now.year, now.month)[1]
     first_day = datetime.datetime(now.year, now.month, 1)
     offset = first_day.weekday()
@@ -74,6 +75,7 @@ def show_calendar(**kwargs):
         calendar_str += "</tr>"
 
     context_dict['tbody'] = calendar_str
+    context_dict['date'] = now
 
     return context_dict
 

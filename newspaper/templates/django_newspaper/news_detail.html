@@ -3,6 +3,10 @@
 
 {% block title %}{% page_attribute "page_title" %}Aktaulności - {{ news.title }}{{ field_event.short_name|upper }}{% endblock title %}
 
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}django_newspaper/css/general.css">
+{% endblock extra_css %}
+
 {% block content %}
 <br><br>
 <div class="row">
@@ -14,21 +18,14 @@
             <div class="panel-body">
                 <h2>{{ news.title }}</h2>
                 <hr>
-                <p>Napisane przez {{ news.author }}, dnia {{ news.pub_date }}</p>
+                <p>Napisane przez <a href="/news/author/{{ news.author.pk }}">{{ news.author }}</a>, dnia {{ news.pub_date }}</p>
                 <br>{{ news.lead | safe }}
                 {{ news.article | safe }}
             </div>
         </div>
     </div>
     <!-- Columna 2 -->
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">LOL</div>
-            <div class="panel-body">
-                lol2
-            </div>
-        </div>
-    </div>
+    {% include "django_newspaper/sidebar.html" %}
     <div class="col-md-1"></div>
 </div>
 

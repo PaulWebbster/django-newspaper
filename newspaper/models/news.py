@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.translation import ugettext_lazy as _
-
+from django.utils.text import slugify
 
 class Author(User):
     class Meta:
@@ -39,6 +39,7 @@ class News(models.Model):
     article = RichTextUploadingField(_("Tekst główny"), blank=True)
     pub_date = models.DateTimeField(_("Data publikacji"))
     author = models.ForeignKey(Author, verbose_name=_("Autor"))
+    slug = models.SlugField(max_length=40, editable=False)
 
     @property
     def is_visible(self):
@@ -46,7 +47,14 @@ class News(models.Model):
 
     def save_model(self, request, instance, form, change):
         self.author = request.user
+
         return instance
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.title)
+
+        super(News, self).save(*args, **kwargs)
 
 #    visible = property(visible_property)
 

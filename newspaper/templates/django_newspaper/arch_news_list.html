@@ -22,9 +22,9 @@
                     {% for news in news_list %}
                         <h2>{{ news.title }}</h2>
                         <hr>
-                        <p>Napisane przez {{ news.author }}, dnia {{ news.pub_date }}</p>
+                        <p>Napisane przez <a href="/news/author/{{ news.author.pk }}">{{ news.author }}</a>, dnia {{ news.pub_date }}</p>
                         <br>{{ news.lead | safe }}
-                        {{ news.article | safe }}
+                        <p align="right"><a href="/news/{{ news.slug }}/">czytaj dalej</a></p>
                         <br>
                     {% endfor %}
                 {% else %}
@@ -49,11 +49,7 @@
         </div>
     </div>
     <!-- Columna 2 -->
-    <div class="col-md-4">
-        {% show_authors %}
-
-        {% show_calendar year=2014 %}
-    </div>
+    {% include "django_newspaper/sidebar.html" %}
     <div class="col-md-1"></div>
 </div>
 

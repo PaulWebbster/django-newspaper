@@ -20,6 +20,8 @@ class NewsBaseView(View):
 
         return context
 
+class NewsDetailView(DetailView):
+    model = News
 
 class NewsListView(NewsBaseView, ListView):
     model = News
