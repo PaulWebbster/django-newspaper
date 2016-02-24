@@ -24,8 +24,13 @@ def show_authors():
 
 
 @register.inclusion_tag("django_newspaper/sidebar/calendar.html")
-def show_calendar():
+def show_calendar(**kwargs):
     context_dict = dict()
+
+    if 'year' in kwargs:
+        print kwargs['year']
+    else:
+        print "dupa"
 
     now = datetime.datetime.now()
     month_days = calendar.monthrange(now.year, now.month)[1]

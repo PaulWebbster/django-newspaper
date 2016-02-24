@@ -17,6 +17,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">Aktualności {{ author }}</div>
             <div class="panel-body">
+                <h1>Archiwum {{ link | slice:":-1" }}</h1>
                 {% if news_list %}
                     {% for news in news_list %}
                         <h2>{{ news.title }}</h2>
@@ -51,7 +52,7 @@
     <div class="col-md-4">
         {% show_authors %}
 
-        {% show_calendar %}
+        {% show_calendar year=2014 %}
     </div>
     <div class="col-md-1"></div>
 </div>
