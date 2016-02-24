@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
+from unidecode import unidecode
 
 class Author(User):
     class Meta:
@@ -52,7 +53,11 @@ class News(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.title)
+            if len(self.title) > 40:
+                self.slug = slugify(unidecode(self.title[:39]))
+            else:
+                self.slug = slugify(unidecode(self.title))
+
 
         super(News, self).save(*args, **kwargs)
 
