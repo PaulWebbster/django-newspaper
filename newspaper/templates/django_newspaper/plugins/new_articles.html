@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+    <div class="panel-heading"><b>NAJNOWSZE WPISY</b></div>
+    <div class="panel-body">
+        <ul>
+            {% for article in arts %}
+            <li><a href="/atualnosci/{{ article.slug }}">{{ article.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

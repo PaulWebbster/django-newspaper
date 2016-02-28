@@ -6,7 +6,7 @@ from ..models.news import Author
 from django.contrib.auth.models import User
 import datetime
 
-NEWS_PER_PAGE = 3
+NEWS_PER_PAGE = 10
 
 class NewsBaseView(View):
     """

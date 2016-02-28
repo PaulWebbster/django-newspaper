@@ -4,3 +4,12 @@
     font-weight: bold;
     text-transform: uppercase;
 }
+
+.django-newspaper a {
+    color: #cb4b16;
+}
+
+.django-newspaper .entry-info {
+    margin-top: -20px;
+    color: grey;
+}

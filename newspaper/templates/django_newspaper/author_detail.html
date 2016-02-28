@@ -1,7 +1,7 @@
-{% extends "base.html" %}
+{% extends "pzwla_base.html" %}
 {% load i18n staticfiles sekizai_tags cms_tags %}
 
-{% block title %}{% page_attribute "page_title" %}Aktaulności - {{ news.title }}{{ field_event.short_name|upper }}{% endblock title %}
+{% block title %}{% page_attribute "page_title" %} - {{ news.title }}{{ field_event.short_name|upper }}{% endblock title %}
 
 {% block extra_css %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}django_newspaper/css/general.css">
@@ -15,16 +15,16 @@
     <!-- Columna 1 -->
     <div class="col-md-6">
         <div class="panel panel-default">
-            <div class="panel-heading">Aktualności</div>
-            <div class="panel-body">
+            <div class="panel-heading"><b>AKTUALNOŚCI</b></div>
+            <div class="panel-body django-newspaper">
                 <h1>Autor {{ author.first_name }} {{ author.last_name }}</h1>
                 {% if page_obj %}
                     {% for news in page_obj %}
                         <h2>{{ news.title }}</h2>
                         <hr>
-                        <p>Napisane przez <a href="/news/author/{{ news.author.pk }}">{{ news.author }}</a>, dnia {{ news.pub_date }}</p>
+                        <p class="entry-info">Napisane przez <a href="/aktualnosci/author/{{ news.author.pk }}">{{ news.author }}</a>, dnia {{ news.pub_date }}</p>
                         <br>{{ news.lead | safe }}
-                        <p align="right"><a href="/news/{{ news.slug }}/">czytaj dalej</a></p>
+                        <p align="right"><a href="/aktualnosci/{{ news.slug }}/">czytaj dalej</a></p>
                         <br>
                     {% endfor %}
                 {% else %}
@@ -34,13 +34,13 @@
                     <div class="pagination">
                         <span class="page-links">
                             {% if page_obj.has_previous %}
-                                <a href="/news/author/{{ author.id }}?page={{ page_obj.previous_page_number }}">poprzednia</a>
+                                <a href="/aktualnosci/author/{{ author.id }}?page={{ page_obj.previous_page_number }}">poprzednia</a>
                             {% endif %}
                             <span class="page-current">
                                 Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}.
                             </span>
                             {% if page_obj.has_next %}
-                                <a href="/news/author/{{ author.id }}?page={{ page_obj.next_page_number }}">następna</a>
+                                <a href="/aktualnosci/author/{{ author.id }}?page={{ page_obj.next_page_number }}">następna</a>
                             {% endif %}
                         </span>
                     </div>

@@ -57,7 +57,7 @@ def show_calendar(**kwargs):
                     if news_number == 0:
                         calendar_str += "<td>{}</td>".format(day_num)
                     else:
-                        calendar_str += "<td><a href='/news/list/{year}/{month}/{day}/'>" \
+                        calendar_str += "<td><a href='/aktualnosci/{year}/{month}/{day}/'>" \
                                         "{day}</a></d>".format(year=now.year, month=now.month, day=day_num)
                     day_num += 1
                 else:
@@ -67,7 +67,7 @@ def show_calendar(**kwargs):
                     if news_number == 0:
                         calendar_str += "<td>{}</td>".format(day_num)
                     else:
-                        calendar_str += "<td><a href='/news/list/{year}/{month}/{day}/'>" \
+                        calendar_str += "<td><a href='/aktualnosci/{year}/{month}/{day}/'>" \
                                         "{day}</a></d>".format(year=now.year, month=now.month, day=day_num)
                     day_num += 1
                 else:

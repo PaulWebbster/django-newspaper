@@ -1,9 +1,9 @@
 {% load i18n %}
 <div class="panel panel-default">
-    <div class="panel-heading">Autorzy</div>
-    <div class="panel-body">
+    <div class="panel-heading"><b>AUTORZY</b></div>
+    <div class="panel-body django-newspaper">
         {% for author in authors %}
-            <a href="/news/author/{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</a> wpisy {{ author.articles_number }}<br>
+            <a href="/aktualnosci/author/{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</a> wpisy {{ author.articles_number }}<br>
         {% endfor %}
     </div>
 </div>
